@@ -10,6 +10,8 @@ router.post('/register',async(req,res)=>{
         if(u) return res.status(400).json({msg:'User exists'});
         u=new User({name,email,password});
         await u.save();
+        console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
         const token=jwt.sign({user:{id:u.id}},process.env.JWT_SECRET,{expiresIn:'7d'});
         res.json({token});
     }
