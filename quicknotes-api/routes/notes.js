@@ -39,7 +39,7 @@ router.get('/:id',auth,async(req,res)=>{
 });
 
 //update
-router.put('/:id',async(req,res)=>{
+router.put('/:id',auth,async(req,res)=>{
     const n= await Note.findOneAndUpdate(
     {_id:req.params.id,userId:req.user.id},req.body,{new:true}
     );

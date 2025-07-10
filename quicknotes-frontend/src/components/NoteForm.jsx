@@ -6,6 +6,8 @@ import { useNavigate,useParams } from 'react-router-dom';
 export default function NoteForm() {
     const [form,setForm]=useState({title:'',content:'',tags:''});
     const {id}=useParams();
+    console.log("Editing note with ID:", id);
+
     const navigate=useNavigate();
     const loadNote=async()=>{
         if(id){
